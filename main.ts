@@ -1,70 +1,23 @@
-controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
-    projectile = sprites.createProjectileFromSide(img`
-        .............cc.
-        ............cbbc
-        ............cbbc
-        ...........bdcc.
-        ...........bdbb.
-        ..........bddc..
-        ..........bdbb..
-        .........bddc...
-        .........bdbb...
-        ........bddc....
-        ........bdbb....
-        .......bddc.....
-        .......bdbb.....
-        ......bddc......
-        ......bdbb......
-        .....bddc.......
-        .....bdbb.......
-        ....bddc........
-        ....bdbb........
-        ...bddc.........
-        ...bdbb.........
-        ..bddc..........
-        ..bdbb..........
-        .bddc...........
-        .bdbb...........
-        b1dc............
-        b11c............
-        b11c............
-        b11c.........cc.
-        b11c........cbbc
-        b11c........cbbc
-        b11c.......bdcc.
-        b11c.......bdbb.
-        b11c......bddc..
-        b11bccc...bdbb..
-        b11bbbbcccddc...
-        b11bcccbccdbb...
-        b11b..ccbddc....
-        b11b...ccdbbc...
-        b11b...bddcbc...
-        b11b...bdbbcbc..
-        b11b..bddc.fbc..
-        b11b..bdbb.fbf..
-        b11b.bddc..fcf..
-        b11b.bdbb..fcf..
-        b11bbddc...fcf..
-        b11bbdbb...fcf..
-        b11bddc...cfcfc.
-        b11ddbb..cbfcfbc
-        b1dddc...cdfffdc
-        b1ddbb...cdcfcdc
-        cdddc....cbdddbc
-        cddbb....cbbbbbc
-        cddc.....cbbbbbc
-        cdbb.....cbbbbbc
-        .cc......cbbbbbc
-        .........cbbbbbc
-        .........cbbbbbc
-        .........cbbbbbc
-        .........8bbbbb8
-        .........8bbbbb8
-        .........6bbbbb6
-        ..........6bbb6.
-        ...........666..
-        `, 0, 50)
+controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
+    let mySprite: Sprite = null
+    projectile = sprites.createProjectileFromSprite(img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . 3 . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `, mySprite, 50, 50)
     music.wawawawaa.play()
 })
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, otherSprite) {
@@ -79,7 +32,6 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSp
 })
 let asteroide: Sprite = null
 let projectile: Sprite = null
-let mySprite: Sprite = null
 game.splash("BENVINGUTS AL WAKASOO", "Apreta A per començar i per B disparar")
 effects.starField.startScreenEffect()
 let mySprite2 = sprites.create(img`
@@ -100,9 +52,8 @@ let mySprite2 = sprites.create(img`
     ...cccdddbbbdddddcc.....
     ......ccccccccccc.......
     `, SpriteKind.Player)
-mySprite2.setPosition(77, 32)
 controller.moveSprite(mySprite2, 100, 100)
-mySprite.setStayInScreen(true)
+mySprite2.setStayInScreen(true)
 info.setLife(4)
 game.onUpdateInterval(1000, function () {
     asteroide = sprites.createProjectileFromSide(img`
